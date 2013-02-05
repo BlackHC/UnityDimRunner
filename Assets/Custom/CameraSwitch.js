@@ -4,7 +4,7 @@
 private var lastButtonTime = -10.0;
 
 function Start () {
-	
+	animation.wrapMode = WrapMode.ClampForever;
 }
 
 var mode2D : boolean = false;
@@ -16,18 +16,24 @@ function Update () {
 		GameObject.Find( "Player" ).GetComponent( AdaptedThirdPersonController ).onlyAllowLeftRight = mode2D;
 			
 		if( mode2D ) {
-			Camera.main.nearClipPlane = 500;
+			animation["SwitchCameraTo2D"].normalizedTime = 0.0;
+			animation["SwitchCameraTo2D"].speed = 1.0;
+			Camera.mainCamera.animation.CrossFade ("SwitchCameraTo2D");
+			/*Camera.main.nearClipPlane = 500;
 			Camera.main.farClipPlane = 1500;
 			Camera.main.fieldOfView = 1.0;
 			Camera.main.transform.position.z = -1000;
-			Camera.main.transform.position.x = 0;
+			Camera.main.transform.position.x = 0;*/
 		}
 		else {
-			Camera.main.nearClipPlane = 0.3;
+			animation["SwitchCameraTo2D"].normalizedTime = 1.0;
+			animation["SwitchCameraTo2D"].speed = -1.0;
+			Camera.mainCamera.animation.CrossFade ("SwitchCameraTo2D");
+			/*Camera.main.nearClipPlane = 0.3;
 			Camera.main.farClipPlane = 300;
 			Camera.main.fieldOfView = 60.0;
 			Camera.main.transform.position.z = -20;
-			Camera.main.transform.position.x = -20;
+			Camera.main.transform.position.x = -20;*/
 		}
 		lastButtonTime = Time.time;
 	}
