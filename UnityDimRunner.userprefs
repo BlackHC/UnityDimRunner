@@ -1,12 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Custom\RespawnPlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Custom\CameraSwitch.js">
     <Files>
-      <File FileName="Assets\Custom\PlayerRespawn.js" Line="22" Column="57" />
-      <File FileName="Assets\Custom\Follow Player X.js" Line="14" Column="56" />
-      <File FileName="Assets\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" Line="9" Column="32" />
-      <File FileName="Assets\Custom\RespawnPlayer.cs" Line="11" Column="19" />
-      <File FileName="Assets\Custom\PlayerRepositioning.js" Line="12" Column="2" />
+      <File FileName="Assets\Custom\CameraSwitch.js" Line="38" Column="32" />
+      <File FileName="Assets\Custom\Follow Player X.js" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" Line="1" Column="1" />
+      <File FileName="Assets\Custom\RespawnPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Custom\PlayerRepositioning.js" Line="1" Column="1" />
+      <File FileName="Assets\Custom\AdaptedThirdPersonController.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -2,25 +2,37 @@
 
 // Last time the jump button was clicked down
 private var lastButtonTime = -10.0;
-private var switchAnimationTime = 2.0;
-private var cameraLocalPosition : Vector3;
-private var playerOriginalPosition : Vector3;
+private var switchAnimationTime = 0.5;
+private var originalCameraPlayerDistance : float;
 
 function Start () {
 	animation.wrapMode = WrapMode.ClampForever;
 	
-	cameraLocalPosition = transform.position;
-		
+	// fix camera
+	// Set up some state;
+	animation["SwitchCameraTo2D"].normalizedTime = 0.0;
+	animation["SwitchCameraTo2D"].speed = -1.0;
+	// Sample animations now.
+	animation.Play("SwitchCameraTo2D");
+	animation.Sample();	
+	
 	var player = GameObject.Find( "Player" );
-	playerOriginalPosition = player.transform.position;
+	originalCameraPlayerDistance = (player.transform.position - transform.position).magnitude;
+	
+	animation.Stop();
 }
 
 var mode2D : boolean = false;
 
-function Update () {
-	var newFieldOfView = Mathf.Rad2Deg * Mathf.Atan( (playerOriginalPosition.z-cameraLocalPosition.z)/(playerOriginalPosition.z-transform.position.z) * Mathf.Tan( Mathf.Deg2Rad * 60.0 ) );
+function LateUpdate() {
+	var player = GameObject.Find( "Player" );
+	var cameraPlayerDistance = (player.transform.position - transform.position).magnitude;
+	
+	var newFieldOfView = Mathf.Rad2Deg * Mathf.Atan( originalCameraPlayerDistance/cameraPlayerDistance * Mathf.Tan( Mathf.Deg2Rad * 60.0 ) );
 	camera.fieldOfView = newFieldOfView;
+}
 
+function Update () {
 	if( Input.GetButtonDown( "Switch Dimensions" ) && lastButtonTime < Time.time + switchAnimationTime ) {
 		mode2D = !mode2D;
 		ExpandCollisions.Set(mode2D);
